@@ -1,0 +1,20 @@
+.searchBox{
+  margin: .4rem;
+  input{
+    width: 100%;
+  }
+  input::placeholder{
+    font-size: small;
+  }
+}
+
+.mainSidebar {
+  margin: .5rem;
+}
+.menuSidebar {
+  width: 35vw;
+}
+.treeElement {
+  border: 0;
+  padding: 0%;
+}
