@@ -3,9 +3,9 @@ import Sidebar from "./components/sidebar";
 import Table from "./components/table";
 
 function App() {
-  //<Sidebar />
   return (
     <div className="flex">
+      <Sidebar />
       <Header>
         <Table></Table>
       </Header>
