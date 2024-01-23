@@ -4,7 +4,15 @@ import { useState } from "react";
 import { classNames } from "primereact/utils";
 import { Checkbox } from "primereact/checkbox";
 import "./styles.css";
-import { createTableData, header } from "./utils";
+import {
+  createTableData,
+  dateTemplate,
+  header,
+  idTemplate,
+  nameTemplate,
+  statusTemplate,
+  tagTemplate,
+} from "./utils";
 
 const Table = () => {
   const [selectedNodeKeys, setSelectedNodeKeys] = useState<{
@@ -63,12 +71,47 @@ const Table = () => {
         rowsPerPageOptions={[10, 25]}
         togglerTemplate={togglerTemplate}
       >
-        <Column field="toggler" header="" expander></Column>
-        <Column field="name" header="Nombre" sortable></Column>
-        <Column field="tag" header="Etiqueta" sortable></Column>
-        <Column field="status" header="Estado" sortable></Column>
-        <Column field="date" header="Fecha" sortable></Column>
-        <Column field="id" header="ID" sortable></Column>
+        <Column
+          field="toggler"
+          header=""
+          expander
+          style={{ width: "5%" }}
+        ></Column>
+        <Column
+          field="name"
+          header="Nombre"
+          sortable
+          body={nameTemplate}
+          style={{ width: "30%" }}
+        ></Column>
+        <Column
+          field="tag"
+          header="Etiqueta"
+          sortable
+          body={tagTemplate}
+          style={{ width: "10%" }}
+        ></Column>
+        <Column
+          field="status"
+          header="Estado"
+          sortable
+          body={statusTemplate}
+          style={{ width: "10%" }}
+        ></Column>
+        <Column
+          field="date"
+          header="Fecha"
+          sortable
+          body={dateTemplate}
+          style={{ width: "10%" }}
+        ></Column>
+        <Column
+          field="id"
+          header="ID"
+          sortable
+          body={idTemplate}
+          style={{ width: "10%" }}
+        ></Column>
       </TreeTable>
     </div>
   );
