@@ -10,6 +10,7 @@
 
 .mainSidebar {
   margin: .5rem;
+  max-width: 30vh;
 }
 .menuSidebar {
   width: 35vw;

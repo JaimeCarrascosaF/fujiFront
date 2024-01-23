@@ -1,0 +1,10 @@
+.toggleParent{
+  display: flex;
+  align-items: center;
+  .checkbox, .buttonToggle{
+    display: flex;
+  }
+}
+table > thead > tr > th.p-selection-column > div{
+  display: none;
+}
