@@ -11,6 +11,7 @@
 .mainSidebar {
   margin: .5rem;
   max-width: 30vh;
+  height: fit-content;
 }
 .menuSidebar {
   width: 35vw;

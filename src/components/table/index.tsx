@@ -34,13 +34,10 @@ const Table = () => {
         <Checkbox
           className="checkbox"
           onChange={(e) => {
-            console.log(e);
-            console.log(selectedNodeKeys, node, options);
             const obj = {
               [node.key]: e.checked,
             };
             const selectedKeys = { ...selectedNodeKeys, ...obj };
-
             setSelectedNodeKeys(selectedKeys);
           }}
           checked={selectedNodeKeys[node.key]}
@@ -54,7 +51,7 @@ const Table = () => {
         >
           <span className={iconClassName} aria-hidden="true"></span>
         </button>
-        <span className="pi pi-file-pdf"></span>
+        <span className="pi pi-file-pdf flex"></span>
       </div>
     );
   };
@@ -66,44 +63,45 @@ const Table = () => {
         tableStyle={{ minWidth: "50rem" }}
         header={header}
         paginator
-        rows={5}
+        rows={10}
         scrollable
         rowsPerPageOptions={[10, 25]}
         togglerTemplate={togglerTemplate}
+        scrollHeight="600px"
       >
         <Column
           field="toggler"
           header=""
           expander
-          style={{ width: "5%" }}
+          style={{ width: "10%" }}
         ></Column>
         <Column
           field="name"
           header="Nombre"
           sortable
           body={nameTemplate}
-          style={{ width: "30%" }}
+          style={{ width: "50%", height: "3.5rem" }}
         ></Column>
         <Column
           field="tag"
           header="Etiqueta"
           sortable
           body={tagTemplate}
-          style={{ width: "10%" }}
+          style={{ width: "12%" }}
         ></Column>
         <Column
           field="status"
           header="Estado"
           sortable
           body={statusTemplate}
-          style={{ width: "10%" }}
+          style={{ width: "20%" }}
         ></Column>
         <Column
           field="date"
           header="Fecha"
           sortable
           body={dateTemplate}
-          style={{ width: "10%" }}
+          style={{ width: "15%" }}
         ></Column>
         <Column
           field="id"
