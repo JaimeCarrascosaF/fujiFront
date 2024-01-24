@@ -80,7 +80,7 @@ const Table = () => {
           header="Nombre"
           sortable
           body={nameTemplate}
-          style={{ width: "50%", height: "3.5rem" }}
+          style={{ width: "45%", height: "3.5rem" }}
         ></Column>
         <Column
           field="tag"
@@ -94,7 +94,7 @@ const Table = () => {
           header="Estado"
           sortable
           body={statusTemplate}
-          style={{ width: "20%" }}
+          style={{ width: "25%" }}
         ></Column>
         <Column
           field="date"

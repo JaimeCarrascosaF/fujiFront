@@ -1,3 +1,5 @@
+import { classNames } from "primereact/utils";
+
 export const createTableData = () => {
   const arrData = [];
   for (let index = 0; index < 286; index++) {
@@ -67,10 +69,32 @@ export const statusTemplate = (node: any, options: any) => {
   const keysToDraw = [1, 4];
   const drawError =
     (keysToDraw.includes(node.key) || node.key % 4 === 0) && node.key !== 0;
+  const valPend =
+    node.key === 1
+      ? 3
+      : node.key === 5
+      ? 4
+      : (Math.ceil(Math.random() * 10) % 3) + 1;
+  const errorareaClassNames = classNames("errorarea", {
+    orange: valPend === 1,
+    red: valPend !== 1,
+  });
   return (
     <div className="statusParent">
       <div className="processedtext">Procesado</div>
-      {drawError && <div className="error">error</div>}
+      {drawError && (
+        <div className={errorareaClassNames}>
+          <div className="errortext">
+            <div className="first">
+              {valPend} validaciones de grafo pendientes
+            </div>
+            <div className="second">1 asignada a mí</div>
+          </div>
+          <div className="erroricon">
+            <span className="pi pi-info-circle"></span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -49,3 +49,28 @@ table > thead > tr > th.p-selection-column > div{
     margin-left: .5vw;
   }
 }
+.statusParent{
+  .processedtext{
+    
+    color:#258b47;
+  }
+  .errorarea{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    &.red{
+      color: #af2b27;
+    }
+    &.orange{
+      color: #d06323;
+    }
+    .errorText{
+      display:flex;
+    }
+    .errorIcon{
+      display:flex;
+
+    }
+  }
+}
