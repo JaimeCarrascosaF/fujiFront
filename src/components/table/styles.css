@@ -9,6 +9,29 @@
 table > thead > tr > th.p-selection-column > div{
   display: none;
 }
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  .leftText, .rightText{
+    display: flex;
+  }
+  .rightText{
+    color: #497df2;
+    display: flex;
+    .right, .left {
+      align-items: center;
+      display: flex;
+    }
+    .right{
+      margin-left: 5vw;
+    }
+    .collapseText{
+      display: flex;
+      margin-left: .5vw;
+    }
+  }
+}
 .nameParent{
   display: flex;
   flex-direction: column;

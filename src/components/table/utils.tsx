@@ -23,7 +23,22 @@ export const createTableData = () => {
   }
   return arrData;
 };
-export const header = <div className="text-sm">Contiene 286 elementos</div>;
+export const header = (
+  <div className="header">
+    <div className="text-sm leftText">Contiene 286 elementos</div>
+    <div className="rightText">
+      <div className="left">
+        <span className="pi pi-plus flex"></span>
+        <div className="collapseText">Expand all</div>
+      </div>
+      <div className="right">
+        <span className="pi pi-minus flex"></span>
+        <div className="collapseText">Collapse all</div>
+      </div>
+    </div>
+  </div>
+);
+
 export const nameTemplate = () => {
   const breadcrumbText =
     "Expedientes > Contenido Islas Baleares > Expedientes Mater...";
