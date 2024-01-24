@@ -15,6 +15,7 @@ export const createTableData = () => {
             status: "Folder",
             date: "Folder",
             id: "Folder",
+            star: "Folder",
           },
         },
       ],
@@ -23,10 +24,8 @@ export const createTableData = () => {
   return arrData;
 };
 export const header = <div className="text-sm">Contiene 286 elementos</div>;
-export const nameTemplate = (node: any, options: any) => {
-  if (!node) {
-    return;
-  }
+export const nameTemplate = () => {
+  console.log("name");
   const breadcrumbText =
     "Expedientes > Contenido Islas Baleares > Expedientes Mater...";
   return (
@@ -65,16 +64,11 @@ export const statusTemplate = (node: any, options: any) => {
   if (!node) {
     return;
   }
-  console.log(node);
+  console.log("dos");
   const keysToDraw = [1, 4];
   const drawError =
     (keysToDraw.includes(node.key) || node.key % 4 === 0) && node.key !== 0;
-  const valPend =
-    node.key === 1
-      ? 3
-      : node.key === 5
-      ? 4
-      : (Math.ceil(Math.random() * 10) % 3) + 1;
+  const valPend = node.key === 1 ? 3 : 1;
   const errorareaClassNames = classNames("errorarea", {
     orange: valPend === 1,
     red: valPend !== 1,
@@ -115,6 +109,33 @@ export const idTemplate = (node: any, options: any) => {
   return (
     <div className="idParent">
       <div className="idtext">12546793</div>
+    </div>
+  );
+};
+
+const starredKeys: {
+  [index: string]: any;
+} = {};
+export const starTemplate = (node: any, options: any) => {
+  if (!node) {
+    return;
+  }
+  starredKeys[node.key] = "pi-star";
+  let starClassName = "pi " + starredKeys[node.key];
+  return (
+    <div className="idParent">
+      <div
+        onClick={(e: any) => {
+          e.preventDefault();
+          e.target.classList.remove(starredKeys[node.key]);
+          starredKeys[node.key] =
+            starredKeys[node.key] === "pi-star" ? "pi-star-fill" : "pi-star";
+          e.target.classList.add(starredKeys[node.key]);
+        }}
+      >
+        <span className={starClassName}></span>
+      </div>
+      <span className="pi pi-ellipsis-v"></span>
     </div>
   );
 };

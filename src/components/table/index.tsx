@@ -10,6 +10,7 @@ import {
   header,
   idTemplate,
   nameTemplate,
+  starTemplate,
   statusTemplate,
   tagTemplate,
 } from "./utils";
@@ -18,6 +19,7 @@ const Table = () => {
   const [selectedNodeKeys, setSelectedNodeKeys] = useState<{
     [index: string]: any;
   }>({});
+
   const togglerTemplate = (node: any, options: any) => {
     if (!node) {
       return;
@@ -56,6 +58,7 @@ const Table = () => {
     );
   };
   const tableData = createTableData();
+
   return (
     <div className="card">
       <TreeTable
@@ -108,6 +111,13 @@ const Table = () => {
           header="ID"
           sortable
           body={idTemplate}
+          style={{ width: "10%" }}
+        ></Column>
+        <Column
+          field="star"
+          header=""
+          sortable
+          body={starTemplate}
           style={{ width: "10%" }}
         ></Column>
       </TreeTable>
