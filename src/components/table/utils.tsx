@@ -122,7 +122,7 @@ export const starTemplate = (node: any, options: any) => {
   starredKeys[node.key] = "pi-star";
   let starClassName = "pi " + starredKeys[node.key];
   return (
-    <div className="idParent">
+    <div className="starParent">
       <div
         onClick={(e: any) => {
           e.preventDefault();
@@ -131,10 +131,11 @@ export const starTemplate = (node: any, options: any) => {
             starredKeys[node.key] === "pi-star" ? "pi-star-fill" : "pi-star";
           e.target.classList.add(starredKeys[node.key]);
         }}
+        className="star"
       >
         <span className={starClassName}></span>
       </div>
-      <span className="pi pi-ellipsis-v"></span>
+      <span className="pi pi-ellipsis-v dots"></span>
     </div>
   );
 };

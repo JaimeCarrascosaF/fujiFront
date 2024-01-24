@@ -116,9 +116,8 @@ const Table = () => {
         <Column
           field="star"
           header=""
-          sortable
           body={starTemplate}
-          style={{ width: "10%" }}
+          style={{ width: "8%" }}
         ></Column>
       </TreeTable>
     </div>

@@ -84,3 +84,13 @@ table > thead > tr > th.p-selection-column > div{
     font-weight: 600;
   }
 }
+.starParent{
+  display:flex;
+  justify-content: space-between;
+  .star, .dots{
+    display:flex;
+  }
+  .pi-star-fill{
+    color: #e6b52e;
+  }
+}
