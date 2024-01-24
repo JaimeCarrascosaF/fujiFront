@@ -70,7 +70,17 @@ table > thead > tr > th.p-selection-column > div{
     }
     .errorIcon{
       display:flex;
-
     }
+  }
+}
+.dateParent{
+  .datetext{
+    font-size: small;
+  }
+}
+.idParent{
+  .idtext{
+    font-size: small;
+    font-weight: 600;
   }
 }

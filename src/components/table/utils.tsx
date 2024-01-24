@@ -103,8 +103,8 @@ export const dateTemplate = (node: any, options: any) => {
     return;
   }
   return (
-    <div className="nameParent">
-      <span className="pi pi-file-pdf"></span>
+    <div className="dateParent">
+      <div className="datetext">20/05/2023 - 12:20</div>
     </div>
   );
 };
@@ -113,8 +113,8 @@ export const idTemplate = (node: any, options: any) => {
     return;
   }
   return (
-    <div className="nameParent">
-      <span className="pi pi-file-pdf"></span>
+    <div className="idParent">
+      <div className="idtext">12546793</div>
     </div>
   );
 };
