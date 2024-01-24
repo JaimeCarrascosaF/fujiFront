@@ -25,7 +25,6 @@ export const createTableData = () => {
 };
 export const header = <div className="text-sm">Contiene 286 elementos</div>;
 export const nameTemplate = () => {
-  console.log("name");
   const breadcrumbText =
     "Expedientes > Contenido Islas Baleares > Expedientes Mater...";
   return (
