@@ -70,54 +70,54 @@ const Table = () => {
         scrollable
         rowsPerPageOptions={[10, 25]}
         togglerTemplate={togglerTemplate}
-        scrollHeight="600px"
+        scrollHeight="73vh"
       >
         <Column
           field="toggler"
           header=""
           expander
-          style={{ width: "10%" }}
+          style={{ width: "10%", height: "85px" }}
         ></Column>
         <Column
           field="name"
           header="Nombre"
           sortable
           body={nameTemplate}
-          style={{ width: "45%", height: "3.5rem" }}
+          style={{ width: "45%", height: "85px" }}
         ></Column>
         <Column
           field="tag"
           header="Etiqueta"
           sortable
           body={tagTemplate}
-          style={{ width: "12%" }}
+          style={{ width: "12%", height: "85px" }}
         ></Column>
         <Column
           field="status"
           header="Estado"
           sortable
           body={statusTemplate}
-          style={{ width: "25%" }}
+          style={{ width: "25%", height: "85px" }}
         ></Column>
         <Column
           field="date"
           header="Fecha"
           sortable
           body={dateTemplate}
-          style={{ width: "15%" }}
+          style={{ width: "15%", height: "85px" }}
         ></Column>
         <Column
           field="id"
           header="ID"
           sortable
           body={idTemplate}
-          style={{ width: "10%" }}
+          style={{ width: "10%", height: "85px" }}
         ></Column>
         <Column
           field="star"
           header=""
           body={starTemplate}
-          style={{ width: "8%" }}
+          style={{ width: "8%", height: "85px" }}
         ></Column>
       </TreeTable>
     </div>
