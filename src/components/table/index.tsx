@@ -5,6 +5,7 @@ import { classNames } from "primereact/utils";
 import { Checkbox } from "primereact/checkbox";
 import "./styles.css";
 import {
+  checkIfChildren,
   createTableData,
   dateTemplate,
   header,
@@ -14,6 +15,7 @@ import {
   statusTemplate,
   tagTemplate,
 } from "./utils";
+import { detailElement } from "../detailElement";
 
 const Table = () => {
   const [selectedNodeKeys, setSelectedNodeKeys] = useState<{
@@ -21,8 +23,8 @@ const Table = () => {
   }>({});
 
   const togglerTemplate = (node: any, options: any) => {
-    if (!node) {
-      return;
+    if (!node || checkIfChildren(node)) {
+      return detailElement.icon(node, options);
     }
 
     const expanded = options.expanded;
@@ -53,7 +55,7 @@ const Table = () => {
         >
           <span className={iconClassName} aria-hidden="true"></span>
         </button>
-        <span className="pi pi-file-pdf flex"></span>
+        <span className="pi pi-file-pdf flex pdfIcon"></span>
       </div>
     );
   };

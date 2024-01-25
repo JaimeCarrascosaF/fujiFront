@@ -1,4 +1,5 @@
 import { classNames } from "primereact/utils";
+import { detailElement } from "../detailElement";
 
 export const createTableData = () => {
   const arrData = [];
@@ -39,7 +40,8 @@ export const header = (
   </div>
 );
 
-export const nameTemplate = () => {
+export const nameTemplate = (node: any, options: any) => {
+  if (checkIfChildren(node)) return detailElement.name(node, options);
   const breadcrumbText =
     "Expedientes > Contenido Islas Baleares > Expedientes Mater...";
   return (
@@ -58,9 +60,7 @@ export const nameTemplate = () => {
   );
 };
 export const tagTemplate = (node: any, options: any) => {
-  if (!node) {
-    return;
-  }
+  if (checkIfChildren(node)) return;
   return (
     <div className="tagParent">
       <div className="tagone">
@@ -75,10 +75,7 @@ export const tagTemplate = (node: any, options: any) => {
   );
 };
 export const statusTemplate = (node: any, options: any) => {
-  if (!node) {
-    return;
-  }
-  console.log("dos");
+  if (checkIfChildren(node)) return;
   const keysToDraw = [1, 4];
   const drawError =
     (keysToDraw.includes(node.key) || node.key % 4 === 0) && node.key !== 0;
@@ -107,9 +104,7 @@ export const statusTemplate = (node: any, options: any) => {
   );
 };
 export const dateTemplate = (node: any, options: any) => {
-  if (!node) {
-    return;
-  }
+  if (checkIfChildren(node)) return;
   return (
     <div className="dateParent">
       <div className="datetext">20/05/2023 - 12:20</div>
@@ -117,9 +112,7 @@ export const dateTemplate = (node: any, options: any) => {
   );
 };
 export const idTemplate = (node: any, options: any) => {
-  if (!node) {
-    return;
-  }
+  if (checkIfChildren(node)) return;
   return (
     <div className="idParent">
       <div className="idtext">12546793</div>
@@ -131,9 +124,7 @@ const starredKeys: {
   [index: string]: any;
 } = {};
 export const starTemplate = (node: any, options: any) => {
-  if (!node) {
-    return;
-  }
+  if (checkIfChildren(node)) return;
   starredKeys[node.key] = "pi-star";
   let starClassName = "pi " + starredKeys[node.key];
   return (
@@ -153,4 +144,8 @@ export const starTemplate = (node: any, options: any) => {
       <span className="pi pi-ellipsis-v dots"></span>
     </div>
   );
+};
+
+export const checkIfChildren = (node: any) => {
+  return typeof node.key === "string" && node.key.indexOf("-");
 };

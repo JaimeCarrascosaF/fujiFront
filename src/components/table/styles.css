@@ -6,9 +6,16 @@
     display: flex;
     margin: 0;
   }
+  .pdfIcon {
+    color: red;
+  }
 }
 table > thead > tr > th.p-selection-column > div {
   display: none;
+}
+
+table [aria-level="2"] {
+  background-color: #f5f5f5;
 }
 
 #root
