@@ -23,6 +23,7 @@
       }
       .tagsText {
         display: flex;
+        margin-right: 0.3vw;
       }
       .plustag {
         padding-left: 2%;

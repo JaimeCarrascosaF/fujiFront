@@ -45,26 +45,32 @@ export const detailElement = {
   },
 };
 
-const renderTags = (tags: number[]) => {
+const renderTags = (tags: number[], all?: boolean) => {
   return tags.map((val, index, arr) => {
-    if (index < 5) {
-      return <div className="tagsText">Etiqueta {val},</div>;
-    } else if (index === 5) return TextOverlay(arr);
+    if (index < 5 || all) {
+      const lastPosition = index + 1 === arr.length;
+      return (
+        <div className="tagsText">{`${
+          lastPosition ? " y " : " "
+        } Etiqueta ${val}${lastPosition ? "." : ","}`}</div>
+      );
+    } else if (index === 5) return TextOverlay(arr, tags);
     return null;
   });
 };
 
-function TextOverlay(arr: any) {
+function TextOverlay(arr: any, tags: number[]) {
   const op = useRef<OverlayPanel>(null!);
-
   return (
     <>
-      <div className="plustag" onClick={(e) => op.current.toggle(e)}>
+      <div
+        className="plustag"
+        onMouseOver={(e) => op.current.toggle(e)}
+        onMouseOut={() => op.current.hide()}
+      >
         +{arr.length - 5}
       </div>
-      <OverlayPanel ref={op}>
-        <div className="textoverlay">textoverlay</div>
-      </OverlayPanel>
+      <OverlayPanel ref={op}>{renderTags(tags, true)}</OverlayPanel>
     </>
   );
 }
