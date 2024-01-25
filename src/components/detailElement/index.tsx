@@ -1,8 +1,11 @@
 import "./styles.css";
 import { ReactComponent as PdfLogo } from "./DocText.svg";
+import { OverlayPanel } from "primereact/overlaypanel";
+import { useRef } from "react";
 export const detailElement = {
   name: (node: any, options: any) => {
     console.log("nodess", node, options);
+    const tags = [1, 2, 3, 4, 5, 6, 7, 8];
     return (
       <div className="nameChildParent">
         <div className="textChild">
@@ -28,10 +31,7 @@ export const detailElement = {
             3 restricciones <div className="seeRestrictions">Ver</div>
           </div>
           <div className="graytext flex">Etiquetas</div>
-          <div className="subtitletext flex">
-            <span>Etiqueta 1,Etiqueta 2,Etiqueta 3,Etiqueta 4,Etiqueta 5,</span>
-            <div className="plustag">+3</div>
-          </div>
+          <div className="subtitletext flex">{renderTags(tags)}</div>
         </div>
       </div>
     );
@@ -44,3 +44,27 @@ export const detailElement = {
     );
   },
 };
+
+const renderTags = (tags: number[]) => {
+  return tags.map((val, index, arr) => {
+    if (index < 5) {
+      return <div className="tagsText">Etiqueta {val},</div>;
+    } else if (index === 5) return TextOverlay(arr);
+    return null;
+  });
+};
+
+function TextOverlay(arr: any) {
+  const op = useRef<OverlayPanel>(null!);
+
+  return (
+    <>
+      <div className="plustag" onClick={(e) => op.current.toggle(e)}>
+        +{arr.length - 5}
+      </div>
+      <OverlayPanel ref={op}>
+        <div className="textoverlay">textoverlay</div>
+      </OverlayPanel>
+    </>
+  );
+}

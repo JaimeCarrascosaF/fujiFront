@@ -16,10 +16,16 @@
     }
     .subtitletext {
       padding-bottom: 10%;
+      padding-top: 1%;
+      flex-wrap: wrap;
       .seeRestrictions {
         color: #3b82f6;
       }
+      .tagsText {
+        display: flex;
+      }
       .plustag {
+        padding-left: 2%;
         color: #3b82f6;
       }
     }
