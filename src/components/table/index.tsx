@@ -53,7 +53,6 @@ const Table = () => {
               selectedKeys = { ...selectedKeys, ...obj };
             }
             setSelectedNodeKeys(selectedKeys);
-            console.log("selected", selectedKeys);
           }}
           checked={selectedNodeKeys[node.key]}
         ></Checkbox>
