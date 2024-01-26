@@ -1,6 +1,6 @@
 import { Column } from "primereact/column";
-import { TreeTable } from "primereact/treetable";
-import { useRef, useState } from "react";
+import { TreeTable, TreeTableExpandedKeysType } from "primereact/treetable";
+import { useState } from "react";
 import { classNames } from "primereact/utils";
 import { Checkbox } from "primereact/checkbox";
 import "./styles.css";
@@ -8,7 +8,6 @@ import {
   checkIfChildren,
   createTableData,
   dateTemplate,
-  header,
   idTemplate,
   nameTemplate,
   starTemplate,
@@ -21,6 +20,9 @@ const Table = () => {
   const [selectedNodeKeys, setSelectedNodeKeys] = useState<{
     [index: string]: any;
   }>({});
+  const [expandedKeys, setExpandedKeys] = useState<
+    TreeTableExpandedKeysType | undefined
+  >();
 
   const togglerTemplate = (node: any, options: any) => {
     if (!node || checkIfChildren(node)) {
@@ -61,6 +63,29 @@ const Table = () => {
   };
   const tableData = createTableData();
 
+  const toggleExpandKeys = (open: boolean) => {
+    const _expandedKeys = { ...expandedKeys };
+    if (!open) return setExpandedKeys({});
+    tableData.forEach((element) => {
+      _expandedKeys[element.key] = open;
+    });
+    setExpandedKeys(_expandedKeys);
+  };
+  const header = (
+    <div className="header">
+      <div className="text-sm leftText">Contiene 286 elementos</div>
+      <div className="rightText">
+        <div className="left" onClick={() => toggleExpandKeys(true)}>
+          <span className="pi pi-plus flex"></span>
+          <div className="collapseText">Expand all</div>
+        </div>
+        <div className="right" onClick={() => toggleExpandKeys(false)}>
+          <span className="pi pi-minus flex"></span>
+          <div className="collapseText">Collapse all</div>
+        </div>
+      </div>
+    </div>
+  );
   return (
     <div className="card">
       <TreeTable
@@ -73,6 +98,8 @@ const Table = () => {
         rowsPerPageOptions={[10, 25]}
         togglerTemplate={togglerTemplate}
         scrollHeight="73vh"
+        onToggle={(e) => setExpandedKeys(e.value)}
+        expandedKeys={expandedKeys}
       >
         <Column
           field="toggler"

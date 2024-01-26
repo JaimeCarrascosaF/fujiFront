@@ -52,6 +52,7 @@ table [aria-level="2"] {
     display: flex;
     .right,
     .left {
+      cursor: pointer;
       align-items: center;
       display: flex;
     }

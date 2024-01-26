@@ -1,45 +1,25 @@
 import { classNames } from "primereact/utils";
 import { detailElement } from "../detailElement";
 import { useRef } from "react";
+import { OverlayPanel } from "primereact/overlaypanel";
+import { DetailsOverlay } from "../overlayPanel";
 
 export const createTableData = () => {
   const arrData = [];
   for (let index = 0; index < 286; index++) {
     arrData.push({
       key: index,
-      data: "asd",
+      data: null,
       children: [
         {
           key: "0-0",
-          data: {
-            name: "Applications",
-            tag: "100kb",
-            status: "Folder",
-            date: "Folder",
-            id: "Folder",
-            star: "Folder",
-          },
+          data: null,
         },
       ],
     });
   }
   return arrData;
 };
-export const header = (
-  <div className="header">
-    <div className="text-sm leftText">Contiene 286 elementos</div>
-    <div className="rightText">
-      <div className="left">
-        <span className="pi pi-plus flex"></span>
-        <div className="collapseText">Expand all</div>
-      </div>
-      <div className="right">
-        <span className="pi pi-minus flex"></span>
-        <div className="collapseText">Collapse all</div>
-      </div>
-    </div>
-  </div>
-);
 
 export const nameTemplate = (node: any, options: any) => {
   if (checkIfChildren(node)) return detailElement.name(node, options);
@@ -142,7 +122,7 @@ export const starTemplate = (node: any, options: any) => {
       >
         <span className={starClassName}></span>
       </div>
-      <span className="pi pi-ellipsis-v dots"></span>
+      <DetailsOverlay />
     </div>
   );
 };

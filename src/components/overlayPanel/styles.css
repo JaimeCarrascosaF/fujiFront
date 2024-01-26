@@ -1,0 +1,22 @@
+.detailsMain {
+  flex-direction: column;
+  width: 17vw;
+  div {
+    display: flex;
+    padding: 0.3vh 0 0.5vh 0;
+    align-items: center;
+  }
+  .textBlack {
+    font-weight: 700;
+  }
+  .pi {
+    padding-right: 0.5vw;
+  }
+  .prelast {
+    padding-bottom: 1vh;
+  }
+  .last {
+    border-top: 1px solid #dee2e6;
+    padding: 1vh 0 0.2vh 0;
+  }
+}
