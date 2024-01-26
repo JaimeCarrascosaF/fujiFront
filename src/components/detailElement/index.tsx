@@ -4,7 +4,6 @@ import { OverlayPanel } from "primereact/overlaypanel";
 import { useRef } from "react";
 export const detailElement = {
   name: (node: any, options: any) => {
-    console.log("nodess", node, options);
     const tags = [1, 2, 3, 4, 5, 6, 7, 8];
     return (
       <div className="nameChildParent">
@@ -36,7 +35,7 @@ export const detailElement = {
       </div>
     );
   },
-  icon: (node: any, options: any) => {
+  icon: () => {
     return (
       <div className="logoMain">
         <PdfLogo />

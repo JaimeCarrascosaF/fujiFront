@@ -1,7 +1,5 @@
 import { classNames } from "primereact/utils";
 import { detailElement } from "../detailElement";
-import { useRef } from "react";
-import { OverlayPanel } from "primereact/overlaypanel";
 import { DetailsOverlay } from "../overlayPanel";
 
 export const createTableData = () => {

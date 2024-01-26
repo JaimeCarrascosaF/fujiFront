@@ -1,6 +1,6 @@
 import { Column } from "primereact/column";
 import { TreeTable, TreeTableExpandedKeysType } from "primereact/treetable";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { classNames } from "primereact/utils";
 import { Checkbox } from "primereact/checkbox";
 import "./styles.css";
@@ -15,6 +15,8 @@ import {
   tagTemplate,
 } from "./utils";
 import { detailElement } from "../detailElement";
+import { tableDataType } from "../../types/tableDataType";
+import { Button } from "primereact/button";
 
 const Table = () => {
   const [selectedNodeKeys, setSelectedNodeKeys] = useState<{
@@ -23,10 +25,11 @@ const Table = () => {
   const [expandedKeys, setExpandedKeys] = useState<
     TreeTableExpandedKeysType | undefined
   >();
+  const [tableData, setTableData] = useState<tableDataType>([]);
 
   const togglerTemplate = (node: any, options: any) => {
     if (!node || checkIfChildren(node)) {
-      return detailElement.icon(node, options);
+      return detailElement.icon();
     }
 
     const expanded = options.expanded;
@@ -40,11 +43,17 @@ const Table = () => {
         <Checkbox
           className="checkbox"
           onChange={(e) => {
-            const obj = {
-              [node.key]: e.checked,
-            };
-            const selectedKeys = { ...selectedNodeKeys, ...obj };
+            let selectedKeys = { ...selectedNodeKeys };
+            if (!e.checked) {
+              delete selectedKeys[node.key];
+            } else {
+              const obj = {
+                [node.key]: e.checked,
+              };
+              selectedKeys = { ...selectedKeys, ...obj };
+            }
             setSelectedNodeKeys(selectedKeys);
+            console.log("selected", selectedKeys);
           }}
           checked={selectedNodeKeys[node.key]}
         ></Checkbox>
@@ -61,20 +70,46 @@ const Table = () => {
       </div>
     );
   };
-  const tableData = createTableData();
+
+  useEffect(() => {
+    const data = createTableData();
+    setTableData(data);
+  }, [setTableData]);
 
   const toggleExpandKeys = (open: boolean) => {
     const _expandedKeys = { ...expandedKeys };
     if (!open) return setExpandedKeys({});
-    tableData.forEach((element) => {
+    tableData.forEach((element: any) => {
       _expandedKeys[element.key] = open;
     });
     setExpandedKeys(_expandedKeys);
   };
+  const deleteSelectedKeys = () => {
+    const _tableData = [...tableData];
+    for (const key in selectedNodeKeys) {
+      const indexToDelete = _tableData.findIndex(
+        (e) => Number(e.key) === Number(key)
+      );
+      _tableData.splice(indexToDelete, 1);
+    }
+    setSelectedNodeKeys({});
+    setTableData(_tableData);
+  };
   const header = (
     <div className="header">
-      <div className="text-sm leftText">Contiene 286 elementos</div>
+      <div className="text-sm leftText">
+        Contiene {tableData.length} elementos
+      </div>
       <div className="rightText">
+        {Object.keys(selectedNodeKeys).length > 0 && (
+          <div className="deletebutton">
+            <Button
+              label={`Eliminar (${Object.keys(selectedNodeKeys).length})`}
+              icon="pi pi-trash"
+              onClick={() => deleteSelectedKeys()}
+            />
+          </div>
+        )}
         <div className="left" onClick={() => toggleExpandKeys(true)}>
           <span className="pi pi-plus flex"></span>
           <div className="collapseText">Expand all</div>
