@@ -3,6 +3,7 @@ import { Menu } from "primereact/menu";
 import "./styles.css";
 import { Tree } from "primereact/tree";
 import { treeData } from "../../mocks/treeData";
+import { useState } from "react";
 
 const items = [
   {
@@ -17,11 +18,7 @@ const items = [
   },
   {
     template: () => {
-      return (
-        <div className="flex">
-          <Tree value={treeData} className="flex treeElement" />
-        </div>
-      );
+      return <ListTree />;
     },
   },
 ];
@@ -32,5 +29,20 @@ const Sidebar = () => {
     </div>
   );
 };
+
+function ListTree() {
+  const [selectedKey, setSelectedKey] = useState("");
+  return (
+    <div className="flex">
+      <Tree
+        value={treeData}
+        className="flex treeElement"
+        selectionMode="single"
+        selectionKeys={selectedKey}
+        onSelectionChange={(e: any) => setSelectedKey(e.value)}
+      />
+    </div>
+  );
+}
 
 export default Sidebar;

@@ -1,15 +1,23 @@
-.searchBox{
-  margin: .4rem;
-  input{
+.searchBox {
+  margin: 0.4rem;
+  input {
     width: 100%;
   }
-  input::placeholder{
+  input::placeholder {
     font-size: small;
   }
 }
-
+.p-treenode-content {
+  background-image: linear-gradient(#eff6ff, #eff6ff);
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: 0.1s;
+  &:hover {
+    background-size: 100% 100%;
+  }
+}
 .mainSidebar {
-  margin: .5rem;
+  margin: 0.5rem;
   max-width: 30vh;
   height: fit-content;
 }
