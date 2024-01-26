@@ -1,9 +1,10 @@
 import "./styles.css";
 import { ReactComponent as PdfLogo } from "./DocText.svg";
 import { OverlayPanel } from "primereact/overlaypanel";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { ModalDetail } from "../modalDetail";
 export const detailElement = {
-  name: (node: any, options: any) => {
+  name: () => {
     const tags = [1, 2, 3, 4, 5, 6, 7, 8];
     return (
       <div className="nameChildParent">
@@ -36,13 +37,20 @@ export const detailElement = {
     );
   },
   icon: () => {
-    return (
-      <div className="logoMain">
-        <PdfLogo />
-      </div>
-    );
+    return <RenderIcon />;
   },
 };
+
+function RenderIcon() {
+  const [visible, setVisible] = useState<boolean>(false);
+
+  return (
+    <div className="logoMain">
+      <PdfLogo onClick={() => setVisible(true)} />
+      <ModalDetail visible={visible} setVisible={setVisible} />
+    </div>
+  );
+}
 
 const renderTags = (tags: number[], all?: boolean) => {
   return tags.map((val, index, arr) => {

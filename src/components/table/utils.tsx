@@ -19,8 +19,8 @@ export const createTableData = () => {
   return arrData;
 };
 
-export const nameTemplate = (node: any, options: any) => {
-  if (checkIfChildren(node)) return detailElement.name(node, options);
+export const nameTemplate = (node: any) => {
+  if (checkIfChildren(node)) return detailElement.name();
   const breadcrumbText =
     "Expedientes > Contenido Islas Baleares > Expedientes Mater...";
   return (
