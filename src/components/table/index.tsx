@@ -109,11 +109,31 @@ const Table = () => {
             />
           </div>
         )}
-        <div className="left" onClick={() => toggleExpandKeys(true)}>
+
+        <div
+          className="left"
+          onClick={() => toggleExpandKeys(true)}
+          onKeyDown={(e) =>
+            (e.key === "Enter" || e.key === " ") && toggleExpandKeys(true)
+          }
+          aria-label="Expand all"
+          tabIndex={0}
+          role="button"
+        >
           <span className="pi pi-plus flex"></span>
           <div className="collapseText">Expand all</div>
         </div>
-        <div className="right" onClick={() => toggleExpandKeys(false)}>
+
+        <div
+          className="right"
+          onClick={() => toggleExpandKeys(false)}
+          onKeyDown={(e) =>
+            (e.key === "Enter" || e.key === " ") && toggleExpandKeys(false)
+          }
+          aria-label="Collapse all"
+          tabIndex={0}
+          role="button"
+        >
           <span className="pi pi-minus flex"></span>
           <div className="collapseText">Collapse all</div>
         </div>
