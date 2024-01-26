@@ -7,7 +7,13 @@ export const createTableData = () => {
   for (let index = 0; index < 286; index++) {
     arrData.push({
       key: index,
-      data: null,
+      data: {
+        name: index,
+        tag: index,
+        status: index,
+        date: index,
+        id: index,
+      },
       children: [
         {
           key: "0-0",
