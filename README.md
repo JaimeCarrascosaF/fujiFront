@@ -1,24 +1,19 @@
-In the project directory, you can run:
+### Author: Jaime Carrascosa Fernández
 
-### `npm start`
+<inf.jaime1@gmail.com>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Requirements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Node.js installed on version `20.10.0`. Recommended usage of nvm <https://github.com/coreybutler/nvm-windows> in windows or <https://github.com/nvm-sh/nvm> on unix/macOS systems.
+- Port `3000` available. Or set another on both frontend and backend `.env` files.
+- Yarn installed or `npm install --global yarn`
 
-### `npm test`
+## Install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    $ git clone https://github.com/JaimeCarrascosaF/fujiFront
+    $ cd fujiFront
+    $ yarn install
 
-### `npm run build`
+## Running the project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    $ npm run start
