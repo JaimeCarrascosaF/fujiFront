@@ -46,6 +46,7 @@ function RenderIcon() {
 
   return (
     <div className="logoMain">
+      <button className="hidden"></button>
       <PdfLogo onClick={() => setVisible(true)} />
       <ModalDetail visible={visible} setVisible={setVisible} />
     </div>
